@@ -1,7 +1,8 @@
+import React from "react";
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-import UserList from "@/components/UserList/UserList";
+import UserList from "../components/UserList/UserList";
 
 const inter = Inter({ subsets: ["latin"] });
 
