@@ -14,7 +14,7 @@ interface User {
   avatar: string;
 }
 
-const UserDetail = (res: NextApiResponse) => {
+const UserDetail = () => {
   const router = useRouter();
   const { id } = router.query;
   const [user, setUser] = useState<User>();
@@ -26,10 +26,7 @@ const UserDetail = (res: NextApiResponse) => {
           const response = await axios.get(`https://reqres.in/api/users/${id}`);
           setUser(response.data.data);
         } catch (error) {
-          const errorResponse = errorHandler(error, res);
-          if (errorResponse && errorResponse.redirect) {
-            router.push(errorResponse.redirect.destination);
-          }
+          errorHandler(error, router);
         }
       };
       fetchUser();
