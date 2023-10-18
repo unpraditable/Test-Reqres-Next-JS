@@ -2,15 +2,21 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-}
 
-.userDetail {
-  text-align: center;
-}
+  .userDetail {
+    text-align: center;
+  }
 
-.avatar {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  margin-bottom: 20px;
+  .avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+
+  a {
+    font-weight: bold;
+    margin-top: 20px;
+    text-decoration: underline;
+  }
 }

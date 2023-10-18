@@ -2,19 +2,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "./UserList.module.scss";
-import { useRouter } from "next/router";
 import Link from "next/link";
-
-interface User {
-  id: number;
-  email: string;
-  first_name: string;
-  last_name: string;
-  avatar: string;
-}
+import { User } from "@/interfaces/Users";
 
 const UserList = () => {
-  const router = useRouter();
   const [users, setUsers] = useState<User[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
@@ -44,18 +35,13 @@ const UserList = () => {
     }
   };
 
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-    router.push(`/users?page=${page}`);
-  };
-
   return (
     <div className={styles.userListContainer}>
       <h2>User List</h2>
       <ul className={styles.userList}>
         {users.map((user) => (
           <li key={user.id} className={styles.userItem}>
-            <Link href={`user/${user.id}`}>
+            <Link href={`users/${user.id}`}>
               <img
                 src={user.avatar}
                 alt={`${user.first_name} ${user.last_name}`}

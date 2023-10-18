@@ -1,9 +1,12 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import styles from "./Login.module.scss";
+import { AuthContext } from "@/providers/AuthContext";
 
 const Login = () => {
+  const { login } = useContext(AuthContext);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -19,8 +22,8 @@ const Login = () => {
         email,
         password,
       });
-      localStorage.setItem("token", response.data.token);
-      router.push("/");
+      login(response.data.token);
+      router.push("/users");
     } catch (error) {
       setError("Wrong email or password.");
     }

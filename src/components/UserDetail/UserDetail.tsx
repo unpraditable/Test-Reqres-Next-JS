@@ -3,16 +3,9 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import styles from "./UserDetail.module.scss";
-import { NextApiResponse } from "next";
 import errorHandler from "../../pages/api/middleware/errorHandling";
-
-interface User {
-  id: number;
-  email: string;
-  first_name: string;
-  last_name: string;
-  avatar: string;
-}
+import { User } from "@/interfaces/Users";
+import Link from "next/link";
 
 const UserDetail = () => {
   const router = useRouter();
@@ -45,6 +38,7 @@ const UserDetail = () => {
           />
           <h2>{`${user.first_name} ${user.last_name}`}</h2>
           <p>{user.email}</p>
+          <Link href="/users">Back to Users List</Link>
         </div>
       )}
     </div>
